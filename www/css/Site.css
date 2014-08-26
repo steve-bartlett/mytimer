@@ -1,0 +1,19 @@
+﻿
+.timer {
+    width:70px;
+    display:inline;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+ .css-form input.ng-invalid.ng-dirty {
+    background-color: #FA787E;
+  }
+
+.btn-div {
+    padding-top: 20px;
+}
+  /*.css-form input.ng-valid.ng-dirty {
+    background-color: #78FA89;
+  }*/
