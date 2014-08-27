@@ -54,6 +54,7 @@
                             stop = undefined;
 
                             playFinishAlarm();
+                            window.plugins.insomnia.allowSleepAgain();
                         }
                     }
                     else {
@@ -80,12 +81,15 @@
             if (angular.isDefined(stop)) return;
 
             stop = $interval(this.startTimer, 1000);
+
+            window.plugins.insomnia.keepAwake();
         }
 
         this.stoptimer = function () {
             if (angular.isDefined(stop)) {
                 $interval.cancel(stop);
                 stop = undefined;
+                window.plugins.insomnia.allowSleepAgain();
             }
         }
 
