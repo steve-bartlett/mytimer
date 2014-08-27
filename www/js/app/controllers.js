@@ -24,12 +24,16 @@
             console.log('getPhoneGapPath = ' + getPhoneGapPath() + 'siren.wav' );
 
 //            var my_media = new Media( url + '/audio/siren.wav',
-
+            var repeat = 1;
             var my_media = new Media('/android_asset/www/siren.wav',
                 function () {
                     console.log("playAudio():Audio Success");
-                    my_media.seekTo(0);
-                    my_media.play();
+                    if (repeat > 0)
+                    {
+                        repeat = repeat - 1;
+                        my_media.seekTo(0);
+                        my_media.play();
+                    }
                 },
                 function (err) {
                     console.log("playAudio():Audio Error: " + err);
