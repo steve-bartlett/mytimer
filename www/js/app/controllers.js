@@ -28,6 +28,8 @@
             var my_media = new Media('/android_asset/www/siren.wav',
                 function () {
                     console.log("playAudio():Audio Success");
+                    my_media.seekTo(0);
+                    my_media.play();
                 },
                 function (err) {
                     console.log("playAudio():Audio Error: " + err);
