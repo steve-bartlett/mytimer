@@ -21,11 +21,11 @@
         var playFinishAlarm = function () {
             console.log("inside playFinishAlarm() ");
             console.log('window.location.pathname = ' + window.location.pathname );
-            console.log('getPhoneGapPath = ' + getPhoneGapPath() + '/audio/siren.wav' );
+            console.log('getPhoneGapPath = ' + getPhoneGapPath() + 'siren.wav' );
 
 //            var my_media = new Media( url + '/audio/siren.wav',
 
-            var my_media = new Media('file://assets/www/audio/siren.wav',
+            var my_media = new Media(getPhoneGapPath() + 'siren.wav',
                 function () {
                     console.log("playAudio():Audio Success");
                 },
