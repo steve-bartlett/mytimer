@@ -25,7 +25,7 @@
 
 //            var my_media = new Media( url + '/audio/siren.wav',
 
-            var my_media = new Media(getPhoneGapPath() + 'siren.wav',
+            var my_media = new Media('/android_asset/www/siren.wav',
                 function () {
                     console.log("playAudio():Audio Success");
                 },
