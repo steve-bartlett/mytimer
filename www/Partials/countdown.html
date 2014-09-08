@@ -1,14 +1,14 @@
-﻿<div class="container" ng-controller="countdownCtrl as countCtrl">
+﻿<div class="container" ng-controller="cntDwnCtrl as countCtrl">
     <div class="starter-template">
-        <h1>Countdown</h1>
+        <h1>Count down</h1>
         <form name="form" class="css-form" novalidate>
-
-            <p>
-                Hours <input class="form-control timer" placeholder="HH" ng-disabled="countCtrl.running()" type="number" min="0" max="10" name="uhour" ng-model="countCtrl.timer.hours">
-                Minutes <input class="form-control timer" placeholder="MM" ng-disabled="countCtrl.running()" type="number" min="0" max="59" name="uminute" ng-model="countCtrl.timer.minutes" required integer />
-                Seconds <input class="form-control timer" placeholder="SS" ng-disabled="countCtrl.running()" type="number" min="0" max="59" name="usecond" ng-model="countCtrl.timer.seconds" required />
-            </p>
-            <p>
+            
+            <div>
+                <input class="form-control timer" placeholder="HH" ng-disabled="countCtrl.running()" type="number" min="0" max="10" name="uhour" ng-model="countCtrl.timer.hours">
+                <input class="form-control timer" placeholder="MM" ng-disabled="countCtrl.running()" type="number" min="0" max="59" name="uminute" ng-model="countCtrl.timer.minutes" />
+                <input class="form-control timer" placeholder="SS" ng-disabled="countCtrl.running()" type="number" min="0" max="59" name="usecond" ng-model="countCtrl.timer.seconds" />
+            </div>
+            <div>
                 <span ng-show="form.uhour.$error.min || form.uhour.$error.max">
                     Hours must be in range 0 to 10!
                 </span>
@@ -18,20 +18,24 @@
                 <span ng-show="form.usecond.$error.min || form.usecond.$error.max">
                     Seconds must be in range 0 to 59!
                 </span>
-            </p>
-            <p>
-                <img src="img/clock.gif" ng-show="countCtrl.running()" />
-            </p>
+            </div>
+            <div ng-show="countCtrl.running()">
+                <img src="img/clock.gif" />
+            </div>
+            <div class="spacer" ng-hide="countCtrl.running()"></div>
+            
+         <!--   <mycurrenttime></mycurrenttime>-->
+
             <div class="btn-div">
                 <button class="btn btn-primary btn-lg" data-ng-click="countCtrl.start()" ng-disabled="form.$invalid || isUnchanged(user)" ng-hide="countCtrl.running()">Start</button>
 
-                <button class="btn btn-primary btn-lg" data-ng-click="countCtrl.stoptimer()" ng-show="countCtrl.running()">Pause</button>
+                <button id="upause" class="btn btn-primary btn-lg" data-ng-click="countCtrl.stoptimer()" ng-show="countCtrl.running()">Pause</button>
 
             </div>
- 
+
         </form>
         <div>
-           
+
         </div>
     </div>
 </div> <!-- /.container -->
