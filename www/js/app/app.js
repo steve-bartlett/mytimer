@@ -7,7 +7,9 @@
 var countdowntimerApp = angular.module('countdowntimer', [
   'ngRoute',
   'ngResource',
-  'countdowntimerControllers'
+  'cntDwnControllers',
+  'cntDwnDirectives',
+  'cntDwnFilters'
 
   //'countdowntimerFilters',
   //'countdowntimerServices'
