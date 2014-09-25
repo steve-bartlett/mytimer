@@ -22,7 +22,7 @@
                 $scope.timer.minutes = Counter.minutes;
                 $scope.timer.seconds = Counter.seconds;
                 $scope.isrunning = Counter.IsRunning();
-                $scope.soundplaying = Sounds.soundplaying;
+        //        $scope.soundplaying = Sounds.soundplaying;
                 if (Counter.completed) {
                     if (!Sounds.soundplaying)
                     {
