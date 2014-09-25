@@ -28,7 +28,7 @@
                     resetTimes();
                     Sounds.playFinishAlarm();
                 }
-            }, true);
+            }, true); 
 
             $scope.$watch(function () { return Sounds.soundplaying; }, function (newValue) {
                 navigator.notification.alert(
