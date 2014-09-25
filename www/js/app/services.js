@@ -99,6 +99,14 @@
 
             sounds.my_media = new Media('/android_asset/www/siren.wav',
                 function () {
+                    navigator.notification.alert(
+    'playAudio():Audio Success',  // message
+    function alertDismissed() {
+        // do something
+    },         // callback
+    'Note',            // title
+    'Done'                  // buttonName
+);
                     console.log("playAudio():Audio Success");
                     sounds.soundplaying = false;                  
                 },
