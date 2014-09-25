@@ -102,7 +102,7 @@
                     navigator.notification.alert(
     'playAudio():Audio Success',  // message
     function alertDismissed() {
-        // do something
+        sounds.soundplaying = false;
     },         // callback
     'Note',            // title
     'Done'                  // buttonName

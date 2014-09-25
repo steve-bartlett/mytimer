@@ -46,7 +46,9 @@
     <Content Include="siren.wav" />
     <Content Include="www\audio\bomb.wav" />
     <Content Include="www\audio\siren.wav" />
-    <Content Include="www\config.xml" />
+    <Content Include="www\config.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="www\css\bootstrap.min.css" />
     <Content Include="www\css\index.css" />
     <Content Include="www\css\Site.css" />

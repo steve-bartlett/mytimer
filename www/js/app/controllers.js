@@ -8,6 +8,7 @@
 
         $scope.timer = { hours: "", minutes: "", seconds: "" };
         $scope.isrunning = false;
+        $scope.soundplaying = false;
 
         $scope.starttimer = function () {
 
@@ -30,6 +31,14 @@
             }, true);
 
             $scope.$watch(function () { return Sounds; }, function (Sounds) {
+                navigator.notification.alert(
+'$scope.$watch' + Sounds.soundplaying,  // message
+function alertDismissed() {
+    sounds.soundplaying = false;
+},         // callback
+'Note',            // title
+'Done'                  // buttonName
+);
                 $scope.soundplaying = Sounds.soundplaying;
             }, true);
 
