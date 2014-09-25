@@ -89,15 +89,15 @@
 
     countdownServices.factory('Sounds', function () {
 
-        var sounds = { repeat: 1, soundplaying: false };
-        var my_media;
+        var sounds = { repeat: 1, soundplaying: false, my_media: null };
 
         sounds.playFinishAlarm = function () {
 
             sounds.soundplaying = true;
 
-            my_media = new Media('/android_asset/www/siren.wav',
-        //    var my_media = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3",
+            //    var my_media = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3",
+
+            sounds.my_media = new Media('/android_asset/www/siren.wav',
                 function () {
                     console.log("playAudio():Audio Success");
                     sounds.soundplaying = false;                  
@@ -109,15 +109,15 @@
             );
 
             // Play audio
-            my_media.play();
+            sounds.my_media.play();
             console.log("sounds.soundplaying " + sounds.soundplaying);
         };
 
         sounds.cancelFinishAlarm = function () {
             console.log("inside cancelFinishAlarm() ");
             sounds.soundplaying = false;
-            if (angular.isDefined(my_media)) {
-                my_media.stop();
+            if (angular.isDefined(sounds.my_media)) {
+                sounds.my_media.stop();
             }         
         };
 
