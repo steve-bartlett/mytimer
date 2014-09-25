@@ -30,9 +30,9 @@
                 }
             }, true);
 
-            $scope.$watch(function () { return Sounds; }, function (Sounds) {
+            $scope.$watch(function () { return Sounds.soundplaying; }, function (newValue) {
                 navigator.notification.alert(
-'$scope.$watch' + Sounds.soundplaying,  // message
+'$scope.$watch' + newValue,  // message
 function alertDismissed() {
     sounds.soundplaying = false;
 },         // callback
