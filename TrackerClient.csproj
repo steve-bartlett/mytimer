@@ -106,6 +106,7 @@
     <Content Include="www\css\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="www\icon.png" />
     <Content Include="www\img\clock.gif" />
+    <Content Include="www\img\explosion.gif" />
     <Content Include="www\img\logo.png" />
     <Content Include="www\index.html" />
     <Content Include="www\js\angular-resource.js" />
@@ -114,6 +115,7 @@
     <Content Include="www\js\app\app.js" />
     <Content Include="www\js\app\controllers.js" />
     <Content Include="www\js\app\directives.js" />
+    <Content Include="www\js\app\services.js" />
     <Content Include="www\js\index.js" />
     <Content Include="www\Partials\countdown.html" />
     <Content Include="www\Partials\hhmmss.html" />

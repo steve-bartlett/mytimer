@@ -1,12 +1,11 @@
-﻿<div class="container" ng-controller="cntDwnCtrl as countCtrl">
+﻿<div class="container" ng-controller="cntDwnCtrl">
     <div class="starter-template">
         <h1>Count down</h1>
         <form name="form" class="css-form" novalidate>
-            
             <div>
-                <input class="form-control timer" placeholder="HH" ng-disabled="countCtrl.running()" type="number" min="0" max="10" name="uhour" ng-model="countCtrl.timer.hours">
-                <input class="form-control timer" placeholder="MM" ng-disabled="countCtrl.running()" type="number" min="0" max="59" name="uminute" ng-model="countCtrl.timer.minutes" />
-                <input class="form-control timer" placeholder="SS" ng-disabled="countCtrl.running()" type="number" min="0" max="59" name="usecond" ng-model="countCtrl.timer.seconds" />
+                <input class="form-control timer" placeholder="HH" ng-disabled="isrunning" type="number" min="0" max="10" name="uhour" ng-model="timer.hours">
+                <input class="form-control timer" placeholder="MM" ng-disabled="isrunning" type="number" min="0" max="59" name="uminute" ng-model="timer.minutes" />
+                <input id="usecond" class="form-control timer" placeholder="SS" ng-disabled="isrunning" type="number" min="0" max="59" name="usecond" ng-model="timer.seconds" />
             </div>
             <div>
                 <span ng-show="form.uhour.$error.min || form.uhour.$error.max">
@@ -19,18 +18,15 @@
                     Seconds must be in range 0 to 59!
                 </span>
             </div>
-            <div ng-show="countCtrl.running()">
-                <img src="img/clock.gif" />
+            <div class="spacer">
+                <img class="timer_img" src="img/clock.gif" ng-show="isrunning" />
+                <img class="timer_img img_small" src="img/explosion.gif" ng-show="soundplaying" />
             </div>
-            <div class="spacer" ng-hide="countCtrl.running()"></div>
-            
-         <!--   <mycurrenttime></mycurrenttime>-->
 
             <div class="btn-div">
-                <button class="btn btn-primary btn-lg" data-ng-click="countCtrl.start()" ng-disabled="form.$invalid || isUnchanged(user)" ng-hide="countCtrl.running()">Start</button>
-
-                <button id="upause" class="btn btn-primary btn-lg" data-ng-click="countCtrl.stoptimer()" ng-show="countCtrl.running()">Pause</button>
-
+                <button class="btn btn-primary btn-lg" data-ng-click="starttimer()" ng-hide="isrunning || soundplaying"> Start </button>
+                <button id="upause" class="btn btn-primary btn-lg" data-ng-click="stoptimer()" ng-show="isrunning">Pause</button>
+                <button id="usilence" class="btn btn-primary btn-lg" data-ng-click="stopsound()" ng-show="soundplaying" >Silence</button>
             </div>
 
         </form>

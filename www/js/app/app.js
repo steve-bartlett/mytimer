@@ -4,18 +4,19 @@
 
 /* App Module */
 
-var countdowntimerApp = angular.module('countdowntimer', [
+var app = angular.module('countdowntimer', [
   'ngRoute',
   'ngResource',
   'cntDwnControllers',
   'cntDwnDirectives',
-  'cntDwnFilters'
+  'cntDwnFilters',
+  'cntDwnServices'
 
   //'countdowntimerFilters',
   //'countdowntimerServices'
 ]);
 
-countdowntimerApp.config(['$routeProvider',
+app.config(['$routeProvider',
   function ($routeProvider) {
       $routeProvider.
         when('/time', {

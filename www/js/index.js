@@ -23,8 +23,8 @@ var app = {
 
         var my_media = null;
         var mediaTimer = null;
-
     },
+
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:

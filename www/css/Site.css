@@ -19,5 +19,11 @@
   }*/
 
 .spacer{
-    margin-bottom: 128px;
+    height: 128px;
+}
+.timer_img {
+    vertical-align:middle;
+}
+.img_small{
+    margin-top: 20px;
 }

@@ -1,116 +1,61 @@
-﻿(function () {
-    var url = 'http://192.168.1.2:3000';
-    'use strict';
-
-    var timer = { hours: '', minutes: '', seconds: '' };
+﻿     'use strict';
 
     /* Controllers */
 
     var cntrl = angular.module('cntDwnControllers', []);
 
-    cntrl.controller('cntDwnCtrl', function ($interval) {
+    cntrl.controller('cntDwnCtrl', function ($scope, $interval, Counter, Sounds) {
 
-        this.timer = timer;
+        $scope.timer = { hours: "", minutes: "", seconds: "" };
+        $scope.isrunning = false;
 
-        var getPhoneGapPath = function() {
-            var path = window.location.pathname;
-            path = path.substr( path, path.length - 10 );
-            return 'file://' + path;   
-        }
+        $scope.starttimer = function () {
 
-        var resetTimes = function () {
-            if (timer.hours == 0 && timer.minutes == 0 && timer.seconds == 0) {
-                timer.hours = timer.minutes = timer.seconds = '';
-            }
-        }
-
-        var playFinishAlarm = function () {
-            console.log("inside playFinishAlarm() ");
-            console.log('window.location.pathname = ' + window.location.pathname );
-            console.log('getPhoneGapPath = ' + getPhoneGapPath() + 'siren.wav' );
-
-            var repeat = 1;
-            var my_media = new Media('/android_asset/www/siren.wav',
-                function () {
-                    console.log("playAudio():Audio Success");
-                    if (repeat > 0)
-                    {
-                        repeat = repeat - 1;
-                        my_media.seekTo(0);
-                        my_media.play();
-                    }
-                },
-                function (err) {
-                    console.log("playAudio():Audio Error: " + err);
-                }
-            );
-            // Play audio
-            my_media.play();
-        }
-
-        this.startTimer = function () {
-            --timer.seconds;
-            if (timer.seconds <= 0) {
-                if (timer.minutes <= 0) {
-                    if (timer.hours <= 0) {
-
-                        if (angular.isDefined(stop)) {
-                            $interval.cancel(stop);
-                            stop = undefined;
-
-                            resetTimes();
-                            playFinishAlarm();
-                            window.plugins.insomnia.allowSleepAgain();
-                        }
-                    }
-                    else {
-                        --timer.hours;
-                        timer.minutes = 59;
-                    }
-                }
-                else {
-                    --timer.minutes;
-                    timer.seconds = 59;
-                }
-            }
-        };
-
-        this.running = function () {
-            if (angular.isDefined(stop)) return true;
-
-            return false;
-        }
-
-        var stop;
-        this.start = function () {
-            // Don't start a new timer if we are already timering
-            if (angular.isDefined(stop)) return;
-
-            if (this.timer.hours == '' && this.timer.minutes == '' && this.timer.seconds == '') {
+            if ($scope.timer.hours == 0 && $scope.timer.minutes == 0 && $scope.timer.seconds == 0) {
                 return;
             }
-            if (this.timer.hours == '') {
-                this.timer.hours = 0
-            }
-            if (this.timer.minutes == '') {
-                this.timer.minutes = 0
-            }
-            if (this.timer.seconds == '') {
-                this.timer.seconds = 0
-            }
 
-            stop = $interval(this.startTimer, 1000);
-            window.plugins.insomnia.keepAwake();
-        }
+            Counter.Initial($scope.timer.hours, $scope.timer.minutes, $scope.timer.seconds);
 
-        this.stoptimer = function () {
-            if (angular.isDefined(stop)) {
-                $interval.cancel(stop);
-                stop = undefined;
-                window.plugins.insomnia.allowSleepAgain();
+            $scope.$watch(function () { return Counter; }, function (Counter) {
+                $scope.timer.hours = Counter.hours;
+                $scope.timer.minutes = Counter.minutes;
+                $scope.timer.seconds = Counter.seconds;
+                $scope.isrunning = Counter.IsRunning();
+                $scope.soundplaying = Sounds.soundplaying;
+                if (Counter.completed) {
+                    if (!Sounds.soundplaying)
+                    {
+                        resetTimes();
+                        Sounds.playFinishAlarm();
+                    }
+                }
+            }, true);
+
+            $scope.$watch(function () { return Sounds; }, function (Sounds) {
+                $scope.soundplaying = Sounds.soundplaying;
+            }, true);
+
+            Counter.Start();
+            //window.plugins.insomnia.keepAwake();
+            document.getElementById('usecond').blur()
+        };
+
+        $scope.stoptimer = function () {
+            Counter.Stop();
+            //window.plugins.insomnia.allowSleepAgain();
+            $scope.isrunning = false;
+        };
+
+        $scope.stopsound = function () {
+            Sounds.cancelFinishAlarm();
+            resetTimes();
+        };
+        
+        var resetTimes = function () {
+            if ($scope.timer.hours == 0 && $scope.timer.minutes == 0 && $scope.timer.seconds == 0) {
+                $scope.timer.hours = $scope.timer.minutes = $scope.timer.seconds = '';
             }
-        }
-
+        };
     });
 
-})();
