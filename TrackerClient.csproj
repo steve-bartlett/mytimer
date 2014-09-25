@@ -116,6 +116,7 @@
     <Content Include="www\js\app\controllers.js" />
     <Content Include="www\js\app\directives.js" />
     <Content Include="www\js\app\services.js" />
+    <Content Include="www\js\bootstrap.min.js" />
     <Content Include="www\js\index.js" />
     <Content Include="www\Partials\countdown.html" />
     <Content Include="www\Partials\hhmmss.html" />

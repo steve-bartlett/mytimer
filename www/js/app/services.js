@@ -96,9 +96,8 @@
 
             sounds.soundplaying = true;
 
-                      var my_media = new Media('/android_asset/www/siren.wav',
-         //   console.log("playing " + getPhoneGapPath() + '/www/siren.wav');
-          //  my_media = new Media(getPhoneGapPath() + '/www/siren.wav',
+            my_media = new Media('/android_asset/www/siren.wav',
+        //    var my_media = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3",
                 function () {
                     console.log("playAudio():Audio Success");
                     sounds.soundplaying = false;                  
