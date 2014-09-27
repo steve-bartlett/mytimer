@@ -94,7 +94,7 @@
         sounds.playFinishAlarm = function () {
 
             sounds.soundplaying = true;
- //           $timeout(function () { sounds.soundplaying = false; console.log("Interval set interval = false"); }, 3000);
+  //          $timeout(function () { sounds.soundplaying = false; console.log("Interval set interval = false"); }, 3000);
 
             //    var my_media = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3",
 
@@ -118,7 +118,7 @@
             );
 
 //            // Play audio
-//            sounds.my_media.play();
+            sounds.my_media.play();
             console.log("sounds.soundplaying " + sounds.soundplaying);
         };
 
