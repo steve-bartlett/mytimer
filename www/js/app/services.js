@@ -113,7 +113,7 @@
                 },
                 function (err) {
                     console.log("playAudio():Audio Error: " + err.code + " " + err.message);
-                    sounds.soundplaying = false;
+                    $timeout(function () { sounds.soundplaying = false; console.log("Interval set interval = false"); }, 0);
                 }
             );
 
