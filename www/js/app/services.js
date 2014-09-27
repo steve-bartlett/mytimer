@@ -87,13 +87,14 @@
     // Media player
     /*********************************************************************/
 
-    countdownServices.factory('Sounds', function () {
+    countdownServices.factory('Sounds', function ($timeout) {
 
         var sounds = { repeat: 1, soundplaying: false, my_media: null };
 
         sounds.playFinishAlarm = function () {
 
             sounds.soundplaying = true;
+ //           $timeout(function () { sounds.soundplaying = false; console.log("Interval set interval = false"); }, 3000);
 
             //    var my_media = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3",
 
@@ -108,7 +109,7 @@
     'Done'                  // buttonName
 );
                     console.log("playAudio():Audio Success");
-                    setInterval(function () { sounds.soundplaying = false; }, 0);
+                    $timeout(function () { sounds.soundplaying = false; console.log("Interval set interval = false"); }, 0);
                 },
                 function (err) {
                     console.log("playAudio():Audio Error: " + err.code + " " + err.message);
@@ -116,8 +117,8 @@
                 }
             );
 
-            // Play audio
-            sounds.my_media.play();
+//            // Play audio
+//            sounds.my_media.play();
             console.log("sounds.soundplaying " + sounds.soundplaying);
         };
 
