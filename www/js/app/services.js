@@ -100,15 +100,6 @@
 
             sounds.my_media = new Media('/android_asset/www/siren.wav',
                 function () {
-                    navigator.notification.alert(
-    'playAudio():Audio Success',  // message
-    function alertDismissed() {
-        sounds.soundplaying = false;
-    },         // callback
-    'Note',            // title
-    'Done'                  // buttonName
-);
-                    console.log("playAudio():Audio Success");
                     $timeout(function () { sounds.soundplaying = false; console.log("Interval set interval = false"); }, 0);
                 },
                 function (err) {
