@@ -31,14 +31,14 @@
             }, true); 
 
             $scope.$watch(function () { return Sounds.soundplaying; }, function (newValue) {
-                navigator.notification.alert(
-'$scope.$watch' + newValue,  // message
-function alertDismissed() {
-    sounds.soundplaying = false;
-},         // callback
-'Note',            // title
-'Done'                  // buttonName
-);
+//                navigator.notification.alert(
+//'$scope.$watch' + newValue,  // message
+//function alertDismissed() {
+//    sounds.soundplaying = false;
+//},         // callback
+//'Note',            // title
+//'Done'                  // buttonName
+//);
                 $scope.soundplaying = Sounds.soundplaying;
             }, true);
 

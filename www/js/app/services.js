@@ -108,7 +108,7 @@
     'Done'                  // buttonName
 );
                     console.log("playAudio():Audio Success");
-                    sounds.soundplaying = false;                  
+                    setInterval(function () { sounds.soundplaying = false; }, 0);
                 },
                 function (err) {
                     console.log("playAudio():Audio Error: " + err.code + " " + err.message);
