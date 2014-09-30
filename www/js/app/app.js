@@ -11,11 +11,8 @@ var app = angular.module('countdowntimer', [
   'cntDwnDirectives',
   'cntDwnFilters',
   'cntDwnServices'
-
-  //'countdowntimerFilters',
-  //'countdowntimerServices'
 ]);
-
+ 
 app.config(['$routeProvider',
   function ($routeProvider) {
       $routeProvider.
@@ -26,6 +23,5 @@ app.config(['$routeProvider',
             redirectTo: '/time'
         });
   }]);
-
 
 })();

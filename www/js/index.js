@@ -20,9 +20,6 @@ var app = {
     // Application Constructor
     initialize: function () {
         this.bindEvents();
-
-        var my_media = null;
-        var mediaTimer = null;
     },
 
     // Bind Event Listeners
@@ -38,7 +35,6 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
-        console.log('getPhoneGapPath = ' + getPhoneGapPath());
     },
 
     // Update DOM on a Received Event
@@ -52,13 +48,6 @@ var app = {
 
         console.log('Received Event: ' + id);
     },
-
-    getPhoneGapPath: function() {
-        var path = window.location.pathname;
-        path = path.substr( path, path.length - 10 );
-        return 'file://' + path;   
-    }
-
 
 };
 

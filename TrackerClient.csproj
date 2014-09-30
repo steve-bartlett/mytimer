@@ -117,6 +117,7 @@
     <Content Include="www\js\app\app.js" />
     <Content Include="www\js\app\controllers.js" />
     <Content Include="www\js\app\directives.js" />
+    <Content Include="www\js\jquery.min.js" />
     <Content Include="www\js\app\services.js" />
     <Content Include="www\js\bootstrap.min.js" />
     <Content Include="www\js\index.js" />
@@ -172,6 +173,10 @@
     <Content Include="www\spec\lib\jasmine-1.2.0\jasmine.css" />
     <Content Include="www\spec\lib\jasmine-1.2.0\jasmine.js" />
     <Content Include="www\test.html" />
+    <Content Include="test\controllersSpec.js" />
+    <Content Include="test\directivesSpec.js" />
+    <Content Include="test\filtersSpec.js" />
+    <Content Include="test\servicesSpec.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".cordova\config.json" />

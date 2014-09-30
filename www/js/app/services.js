@@ -36,6 +36,11 @@
             counter.seconds = s;
         }
 
+        counter.InitialStart = function (h, m, s) {
+            counter.Initial(h, m, s);
+            counter.Start();
+        }
+
         counter.Reset = function () {
             counter.hours = counter.minutes = counter.seconds = 0;
         }
@@ -73,9 +78,7 @@
 
         counter.Cleanup = function () {
             // Make sure that the interval is destroyed too
-            if (angular.isDefined(stop)) {
-                $interval.cancel(stop);
-            }
+            complete();
         }
 
         return counter;
@@ -94,9 +97,6 @@
         sounds.playFinishAlarm = function () {
 
             sounds.soundplaying = true;
-  //          $timeout(function () { sounds.soundplaying = false; console.log("Interval set interval = false"); }, 3000);
-
-            //    var my_media = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3",
 
             sounds.my_media = new Media('/android_asset/www/siren.wav',
                 function () {
@@ -108,13 +108,11 @@
                 }
             );
 
-//            // Play audio
+            // Play audio
             sounds.my_media.play();
-            console.log("sounds.soundplaying " + sounds.soundplaying);
         };
 
         sounds.cancelFinishAlarm = function () {
-            console.log("inside cancelFinishAlarm() ");
             sounds.soundplaying = false;
             if (angular.isDefined(sounds.my_media)) {
                 sounds.my_media.stop();
@@ -129,7 +127,6 @@
                 console.log("istesting");
                 phoneGapPath = sound_url;
             }
-            console.log("phoneGapPath = " + phoneGapPath);
             return phoneGapPath;
         };
 

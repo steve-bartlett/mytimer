@@ -4,23 +4,17 @@
 
     /* Directives */
 
-    var app = angular.module('cntDwnFilters', []);
+    var filters = angular.module('cntDwnFilters', []);
 
-    app.filter('time', function () {
+    filters.filter('paddedtime', function () {
         return function (input) {
-            out = input;
-            if (angular.isNumber(input)) {
-                if (input == 0)
-                {
-                    out = '';
-                }
-                else if (input < 10 && input > 0) {
-                    out = '0' + input;
-                }
+            var out = input;
+            var i = parseInt(input);
+            if( !isNaN(i) && i < 10 && i > 0) {
+                out = '0' + i;
             }
-
             return out;
         };
-    })
+    });
 
 })();

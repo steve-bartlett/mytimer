@@ -1,10 +1,10 @@
 ﻿     'use strict';
 
-    /* Controllers */
+    /* Controllers */ 
 
-    var cntrl = angular.module('cntDwnControllers', []);
+     var controllers = angular.module('cntDwnControllers', []);
 
-    cntrl.controller('cntDwnCtrl', function ($scope, $interval, Counter, Sounds) {
+     controllers.controller('cntDwnCtrl', function ($scope, $interval, Counter, Sounds) {
 
         $scope.timer = { hours: "", minutes: "", seconds: "" };
         $scope.isrunning = false;
@@ -15,8 +15,6 @@
             if ($scope.timer.hours == 0 && $scope.timer.minutes == 0 && $scope.timer.seconds == 0) {
                 return;
             }
-
-            Counter.Initial($scope.timer.hours, $scope.timer.minutes, $scope.timer.seconds);
 
             $scope.$watch(function () { return Counter; }, function (Counter) {
                 $scope.timer.hours = Counter.hours;
@@ -31,26 +29,21 @@
             }, true); 
 
             $scope.$watch(function () { return Sounds.soundplaying; }, function (newValue) {
-//                navigator.notification.alert(
-//'$scope.$watch' + newValue,  // message
-//function alertDismissed() {
-//    sounds.soundplaying = false;
-//},         // callback
-//'Note',            // title
-//'Done'                  // buttonName
-//);
                 $scope.soundplaying = Sounds.soundplaying;
             }, true);
 
-            Counter.Start();
-            //window.plugins.insomnia.keepAwake();
+            Counter.InitialStart($scope.timer.hours, $scope.timer.minutes, $scope.timer.seconds);
+
+            // Android bug?
+            // temp fix for now
             document.getElementById('usecond').blur()
+            window.plugins.insomnia.keepAwake();
         };
 
         $scope.stoptimer = function () {
             Counter.Stop();
-            //window.plugins.insomnia.allowSleepAgain();
             $scope.isrunning = false;
+            window.plugins.insomnia.allowSleepAgain();
         };
 
         $scope.stopsound = function () {
@@ -63,5 +56,7 @@
                 $scope.timer.hours = $scope.timer.minutes = $scope.timer.seconds = '';
             }
         };
+
+        $scope.$on('$destroy', function () { Counter.Cleanup(); });
     });
 
