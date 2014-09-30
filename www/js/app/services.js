@@ -100,11 +100,11 @@
 
             sounds.my_media = new Media('/android_asset/www/siren.wav',
                 function () {
-                    $timeout(function () { sounds.soundplaying = false; console.log("Interval set interval = false"); }, 0);
+                    $timeout(function () { sounds.soundplaying = false; }, 0);
                 },
                 function (err) {
                     console.log("playAudio():Audio Error: " + err.code + " " + err.message);
-                    $timeout(function () { sounds.soundplaying = false; console.log("Interval set interval = false"); }, 0);
+                    $timeout(function () { sounds.soundplaying = false; }, 0);
                 }
             );
 
